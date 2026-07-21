@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>생활도구함 — 일상에 필요한 계산기 모음</title>
+  <meta name="description" content="건강, 육아, 생활에 필요한 계산기와 도구를 한곳에 모았습니다. 회원가입 없이 무료로 사용하세요." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="wordmark" href="index.html">생활<span>도구함</span></a>
+    <span class="tagline">일상의 계산, 여기서 한 번에</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>필요할 때 꺼내 쓰는<br />일상 도구 서랍</h1>
+    <p>회원가입 없이, 광고 방해 최소로. 필요한 도구를 골라 바로 쓰세요.</p>
+  </section>
+
+  <!-- 카테고리 칩: 도구가 늘어나면 여기에 카테고리를 추가하세요 -->
+  <nav class="chips" aria-label="카테고리">
+    <button class="chip on" data-filter="all">전체</button>
+    <button class="chip" data-filter="건강">건강</button>
+    <button class="chip" data-filter="육아">육아</button>
+    <button class="chip" data-filter="생활">생활</button>
+  </nav>
+
+  <!-- ==========================================================
+       도구 슬롯: 새 도구를 만들면 아래에 카드 하나를 복사해 추가하세요.
+       data-cat 값이 카드 위 라벨과 카테고리 필터에 사용됩니다.
+       ========================================================== -->
+  <section class="grid" id="grid">
+
+    <a class="card" href="tools/bmi.html" data-cat="건강">
+      <h2>BMI 계산기</h2>
+      <p>키와 몸무게로 체질량지수와 비만도 단계를 확인합니다.</p>
+    </a>
+
+    <!-- [새 도구 카드 템플릿 — 복사해서 사용]
+    <a class="card" href="tools/파일명.html" data-cat="카테고리">
+      <h2>도구 이름</h2>
+      <p>한 줄 설명.</p>
+    </a>
+    -->
+
+  </section>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    © 생활도구함 · 문의: 이메일주소를넣으세요@example.com
+  </div>
+</footer>
+
+<script>
+  // 카테고리 필터
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+      chip.classList.add('on');
+      const f = chip.dataset.filter;
+      document.querySelectorAll('#grid .card').forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
